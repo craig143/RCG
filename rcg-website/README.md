@@ -1,49 +1,32 @@
 # RCG Advanced — Website
 
-Single-page website for rcgadvanced.com.
-
-## Deploy to Vercel (Option 1 — Recommended, no code needed)
-
-1. Go to [vercel.com](https://vercel.com) and sign up with your GitHub account
-2. Go to [github.com](https://github.com) and create a new repository called `rcg-website`
-3. Upload `index.html` and `vercel.json` to the repository
-4. In Vercel, click **Add New Project** and import the GitHub repository
-5. Click **Deploy** — Vercel handles everything automatically
-6. Your site will be live at `rcg-website.vercel.app` within seconds
-7. To connect `rcgadvanced.com`: go to Project Settings > Domains and add your domain
-
-## Deploy to Vercel (Option 2 — Vercel CLI)
-
-```bash
-npm install -g vercel
-cd rcg-website
-vercel
-```
-
-Follow the prompts. Your site will be live at a Vercel URL immediately.
-
-## Deploy via Vercel Drag and Drop (Quickest option)
-
-1. Go to [vercel.com/new](https://vercel.com/new)
-2. Drag the entire `rcg-website` folder onto the page
-3. Done. Live in under 60 seconds.
+Multi-page website for rcgadvanced.com.
 
 ## Files
 
-- `index.html` — complete single-page website
-- `vercel.json` — Vercel routing configuration
-- `README.md` — this file
+* `index.html` — Home page
+* `about.html` — About page (who we are, how we operate, markets, process)
+* `enquire.html` — Enquire page (contact details and form)
+* `styles.css` — shared stylesheet used by all three pages
+* `script.js` — shared JavaScript used by all three pages (toggles, sector filter, network map, scroll effects)
+* `vercel.json` — enables clean URLs (`/about` instead of `/about.html`)
 
-## Connecting Your Domain (rcgadvanced.com)
+All five files need to stay together in the same folder, since the HTML pages
+link to `styles.css` and `script.js` by relative path, and to each other by
+filename (`about.html`, `enquire.html`, etc.).
 
-Once deployed on Vercel:
-1. Go to your project dashboard on Vercel
-2. Settings > Domains > Add `rcgadvanced.com`
-3. Vercel will give you DNS records to add in your domain registrar
-4. SSL is automatic and free
+## Deploying
+
+This project has no build step — it's plain HTML/CSS/JS. If it's already
+connected to Vercel via GitHub, just replace the files in the repo and push;
+Vercel redeploys automatically. See Vercel's own docs for connecting a new
+repo or domain if setting this up for the first time.
 
 ## Notes
 
-- No build step required. Pure HTML/CSS/JS.
-- Google Fonts loads from CDN (requires internet connection to render correctly)
-- Form submissions are front-end only — connect to Vercel Forms, Formspree or Netlify Forms to receive submissions by email
+* Google Fonts loads from CDN (requires an internet connection to render the
+  monospace typeface correctly; falls back to a system monospace font otherwise).
+* Form submissions on the Enquire page are front-end only — connect to Vercel
+  Forms, Formspree or a similar service to actually receive submissions by email.
+* The homepage network map and the About page's market cards are linked: clicking
+  a market on the homepage map jumps to its card on the About page.
